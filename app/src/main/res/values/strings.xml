@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VerticalGarden</string>
+    <string name="desc_eye_button">Deskripsi untuk tombol mata</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
