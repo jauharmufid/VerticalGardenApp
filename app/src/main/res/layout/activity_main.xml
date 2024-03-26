@@ -8,13 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center_vertical">
         <ImageView
             android:id="@+id/logoverticalgarden"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_pta_1"
-            android:layout_centerHorizontal="true"/>
+            android:layout_height="253dp"
+            android:src="@drawable/logobaru"
+            android:paddingTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/logo_vertical_garden"/>
 
         <LinearLayout
             android:id="@+id/Linlay1"
@@ -22,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/logoverticalgarden"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="25dp"
             android:orientation="vertical">
 
             <EditText
@@ -30,39 +32,41 @@
                 android:layout_width="280dp"
                 android:layout_height="67dp"
                 android:background="@drawable/button_shape2"
-                android:drawableLeft="@drawable/mail"
+                android:drawableStart="@drawable/mail"
                 android:drawablePadding="25dp"
                 android:fontFamily="@font/interregular"
                 android:gravity="start|center_vertical"
-                android:hint="Enter Your Email"
+                android:hint="@string/enter_your_email"
                 android:inputType="textEmailSubject"
-                android:paddingLeft="24dp"
-                android:paddingRight="30dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="30dp"
                 android:textColorHint="@color/Green"
-                android:textSize="16dp" />
+                android:textSize="16sp"
+                android:autofillHints="emailAddress"/>
             <EditText
                 android:id="@+id/addpass"
                 android:layout_width="280dp"
                 android:layout_height="67dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/button_shape2"
-                android:drawableLeft="@drawable/key"
+                android:drawableStart="@drawable/key"
                 android:drawablePadding="18dp"
                 android:fontFamily="@font/interregular"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
-                android:paddingLeft="24dp"
-                android:paddingRight= "75dp"
+                android:paddingStart="24dp"
+                android:paddingEnd= "75dp"
                 android:textColorHint="@color/Green"
-                android:textSize="16dp" />
+                android:textSize="16sp"
+                android:autofillHints="password" />
         </LinearLayout>
         <ImageButton
             android:id="@+id/eyeButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/logoverticalgarden"
-            android:layout_marginTop="145dp"
-            android:layout_marginLeft="250dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="250dp"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="@string/desc_eye_button"
             android:src="@drawable/eye_close" />
@@ -74,7 +78,7 @@
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription=""
+            android:contentDescription="@string/button_google"
             android:src="@drawable/logogoogle"
             android:scaleType="centerInside"/>
         <TextView
@@ -87,8 +91,8 @@
             android:fontFamily="@font/interregular"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
-            android:text="Forgot Password?"
-            android:textSize="16dp"/>
+            android:text="@string/text_button_forgot_password"
+            android:textSize="16sp"/>
         <Button
             android:id="@+id/loginbutton"
             android:layout_width="242dp"
@@ -96,9 +100,9 @@
             android:layout_below="@id/forgotpass"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_shape"
-            android:text="Login"
+            android:text="@string/buttonlogin"
             android:fontFamily="@font/intersemibold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
         <TextView
@@ -106,9 +110,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:text="Sign Up"
+            android:text="@string/text_button_sign_up"
             android:fontFamily="@font/interregular"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:layout_below="@id/loginbutton"
             android:layout_marginTop="20dp"
             android:textColor="@color/Green"/>

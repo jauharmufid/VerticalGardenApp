@@ -13,6 +13,15 @@
         android:theme="@style/Theme.VerticalGarden"
         tools:targetApi="31">
         <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".CustomDrawerSettings"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardTabLayout"
+            android:exported="false" />
+        <activity
             android:name=".OTPActivity"
             android:exported="false" />
         <activity

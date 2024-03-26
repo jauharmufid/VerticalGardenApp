@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardTabLayout">
+    <ImageView
+        android:id="@+id/bgtab"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/tablayout"
+        android:importantForAccessibility="no" />
+    <ImageButton
+        android:id="@+id/iconsettings"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/editprofile"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:padding="10dp"
+        android:contentDescription="@string/editprofile"/>
+
+    <LinearLayout
+        android:id="@+id/Linlay5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/headervertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_header_vertical"
+            android:fontFamily="@font/interextrabold"
+            android:textColor="@color/Green"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/headergarden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_header_garden"
+            android:fontFamily="@font/interextrabold"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/bgtab"
+        app:tabTextColor="@color/translucent_green"
+        app:tabSelectedTextColor="@color/black"
+        android:background="@color/translucent_green">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabmitemoncon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tab_monitoring_amp_controling"
+            android:contentDescription="@string/tabitemmoncon"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabeitemvaluasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tab_evaluation"
+            android:contentDescription="@string/tabitemeval"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabitemplantinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tab_plant_info"
+            android:contentDescription="@string/tabitemplantinfo"/>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpage"
+        android:layout_below="@+id/tablayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/viewpage"/>
+
+</RelativeLayout>
