@@ -37,7 +37,7 @@
                 android:fontFamily="@font/interregular"
                 android:gravity="start|center_vertical"
                 android:hint="@string/enter_your_email"
-                android:inputType="textEmailSubject"
+                android:inputType="textEmailAddress"
                 android:paddingStart="24dp"
                 android:paddingEnd="30dp"
                 android:textColorHint="@color/Green"

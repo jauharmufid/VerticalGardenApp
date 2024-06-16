@@ -30,7 +30,8 @@
                 android:src="@drawable/shape_monitoring"
                 android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/recwater" />
             <ImageView
                 android:id="@+id/iconWater"
                 android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
                 app:layout_constraintStart_toStartOf="@id/recwater"
                 app:layout_constraintTop_toTopOf="@id/recwater"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/iconwatermonitoring" />
             <TextView
                 android:id="@+id/textmonconwater"
                 android:layout_width="wrap_content"
@@ -56,7 +58,7 @@
                 android:id="@+id/nilaiwater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text= "0%"
+                android:text= "@string/__0"
                 android:fontFamily="@font/interextrabold"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -74,7 +76,8 @@
                 android:padding="10dp"
                 app:layout_constraintStart_toEndOf="@id/recwater"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="40dp"/>
+                android:layout_marginStart="40dp"
+                android:contentDescription="@string/recph" />
             <ImageView
                 android:id="@+id/iconph"
                 android:layout_width="wrap_content"
@@ -83,7 +86,8 @@
                 app:layout_constraintStart_toStartOf="@id/recph"
                 app:layout_constraintTop_toTopOf="@id/recph"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/iconphmonitoring" />
             <TextView
                 android:id="@+id/textmonconph"
                 android:layout_width="wrap_content"
@@ -100,7 +104,7 @@
                 android:id="@+id/nilaiph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text= "0"
+                android:text= "@string/_0"
                 android:fontFamily="@font/interextrabold"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -117,7 +121,8 @@
                 android:src="@drawable/shape_monitoring"
                 android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recwater"/>
+                app:layout_constraintTop_toBottomOf="@id/recwater"
+                android:contentDescription="@string/recnutrisi" />
             <ImageView
                 android:id="@+id/iconnutrisi"
                 android:layout_width="wrap_content"
@@ -126,7 +131,8 @@
                 app:layout_constraintStart_toStartOf="@id/recnutrisi"
                 app:layout_constraintTop_toTopOf="@id/recnutrisi"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/iconnutrisimonitoring" />
             <TextView
                 android:id="@+id/textmonconnutrisi"
                 android:layout_width="wrap_content"
@@ -143,7 +149,7 @@
                 android:id="@+id/nilainutrisi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text= "0ppm"
+                android:text= "@string/_0ppm"
                 android:fontFamily="@font/interextrabold"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -161,7 +167,8 @@
                 android:padding="10dp"
                 app:layout_constraintStart_toEndOf="@id/recnutrisi"
                 app:layout_constraintTop_toBottomOf="@id/recph"
-                android:layout_marginStart="40dp"/>
+                android:layout_marginStart="40dp"
+                android:contentDescription="@string/rectemp" />
             <ImageView
                 android:id="@+id/icontemp"
                 android:layout_width="wrap_content"
@@ -170,7 +177,8 @@
                 app:layout_constraintStart_toStartOf="@id/rectemp"
                 app:layout_constraintTop_toTopOf="@id/rectemp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/icontempmonitoring" />
             <TextView
                 android:id="@+id/textmoncontemp"
                 android:layout_width="wrap_content"
@@ -187,10 +195,10 @@
                 android:id="@+id/nilaintemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text= "0°C"
+                android:text= "@string/_0_c"
                 android:fontFamily="@font/interextrabold"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:paddingTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/textmoncontemp"
                 app:layout_constraintStart_toStartOf="@id/rectemp"
@@ -199,7 +207,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
-            android:id="@+id/controling"
+            android:id="@+id/controlling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/controling"
@@ -210,18 +218,54 @@
             android:paddingBottom="10dp"
             android:textColor="@color/black"/>
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch1"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:layout_below="@id/controlling"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:textOff="@string/Manual_switch"
+            android:textOn="@string/Auto_switch"
+            android:thumbTint="@color/switch_color_selector"
+            android:trackTint="@color/switch_color_selector"
+            tools:ignore="TouchTargetSizeCheck" />
+        <TextView
+            android:id="@+id/manualswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/Manual_switch"
+            android:fontFamily="@font/intersemibold"
+            android:layout_marginStart="240dp"
+            android:layout_below="@id/controlling"
+            android:textColor="@color/black"
+            android:layout_alignTop="@id/switch1"/>
+        <TextView
+            android:id="@+id/autoswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/Auto_switch"
+            android:fontFamily="@font/intersemibold"
+            android:layout_marginStart="90dp"
+            android:layout_below="@id/controlling"
+            android:textColor="@color/black"
+            android:layout_alignTop="@id/switch1"/>
         <EditText
             android:id="@+id/inputwater"
             android:layout_width="211dp"
             android:layout_height="58dp"
-            android:layout_below="@+id/controling"
+            android:layout_below="@+id/switch1"
             android:layout_marginStart="10dp"
             android:background="@drawable/shape_controling"
             android:drawableStart="@drawable/water"
             android:drawablePadding="25dp"
             android:fontFamily="@font/interregular"
             android:gravity="start|center_vertical"
-            android:hint="Add Water"
+            android:hint="@string/add_water"
             android:inputType="number"
             android:textColorHint="@color/white"
             android:textSize="16sp" />
@@ -231,62 +275,37 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/buttonapply"
-            android:text="APPLY"
+            android:text="@string/applywater"
             android:textColor="@color/white"
             android:layout_marginStart="260dp"
-            android:layout_below="@+id/controling"/>
-        <EditText
-            android:id="@+id/inputphup"
-            android:layout_width="211dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_controling"
-            android:drawableStart="@drawable/ph"
-            android:drawablePadding="25dp"
-            android:fontFamily="@font/interregular"
-            android:gravity="start|center_vertical"
-            android:hint="Add pH Up"
-            android:inputType="number"
-            android:textColorHint="@color/white"
-            android:textSize="16sp"
-            android:layout_below="@+id/inputwater"/>
-        <Button
-            android:id="@+id/applyphup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/buttonapply"
-            android:text="APPLY"
-            android:textColor="@color/white"
-            android:layout_marginStart="260dp"
-            android:layout_below="@+id/applywater"/>
-        <EditText
-            android:id="@+id/inputphdown"
-            android:layout_width="211dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_controling"
-            android:drawableStart="@drawable/ph"
-            android:drawablePadding="25dp"
-            android:fontFamily="@font/interregular"
-            android:gravity="start|center_vertical"
-            android:hint="Add pH Down"
-            android:inputType="number"
-            android:textColorHint="@color/white"
-            android:textSize="16sp"
-            android:layout_below="@+id/inputphup"/>
-        <Button
-            android:id="@+id/applyphdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/buttonapply"
-            android:text="APPLY"
-            android:textColor="@color/white"
-            android:layout_marginStart="260dp"
-            android:layout_below="@+id/applyphup"/>
+            android:layout_below="@+id/switch1"/>
+<!--        <EditText-->
+<!--            android:id="@+id/inputph"-->
+<!--            android:layout_width="211dp"-->
+<!--            android:layout_height="58dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/shape_controling"-->
+<!--            android:drawableStart="@drawable/ph"-->
+<!--            android:drawablePadding="25dp"-->
+<!--            android:fontFamily="@font/interregular"-->
+<!--            android:gravity="start|center_vertical"-->
+<!--            android:hint="@string/add_ph"-->
+<!--            android:inputType="number"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_below="@+id/inputwater"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/applyph"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:background="@drawable/buttonapply"-->
+<!--            android:text="@string/applyph"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_marginStart="260dp"-->
+<!--            android:layout_below="@+id/applywater"/>-->
+
         <EditText
             android:id="@+id/inputnutrisi"
             android:layout_width="211dp"
@@ -294,25 +313,25 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_controling"
-            android:drawableStart="@drawable/ph"
+            android:drawableStart="@drawable/nutrisi"
             android:drawablePadding="25dp"
             android:fontFamily="@font/interregular"
             android:gravity="start|center_vertical"
-            android:hint="Add Nutritions"
+            android:hint="@string/add_nutritions"
             android:inputType="number"
             android:textColorHint="@color/white"
             android:textSize="16sp"
-            android:layout_below="@+id/inputphdown"/>
+            android:layout_below="@+id/inputwater"/>
         <Button
             android:id="@+id/applynutrisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/buttonapply"
-            android:text="APPLY"
+            android:text="@string/applynutritions"
             android:textColor="@color/white"
             android:layout_marginStart="260dp"
             android:layout_marginBottom="62dp"
-            android:layout_below="@+id/applyphdown"/>
+            android:layout_below="@+id/applywater"/>
     </RelativeLayout>
 </ScrollView>

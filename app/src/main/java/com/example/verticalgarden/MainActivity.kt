@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         btnSignupListener()
         btnForgotpass()
         setupEyeButton()
+        setupLoginButton()
     }
     private fun configureGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -46,16 +47,13 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                // Google Sign In failed, handle it
-                // ...
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
             }
         }
@@ -65,14 +63,11 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    // You can update UI or navigate to another activity here
                     startActivity(Intent(this, DashboardTabLayout::class.java))
                     finish()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -114,4 +109,24 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+    private fun setupLoginButton() {
+        binding.loginbutton.setOnClickListener {
+            val email = binding.addemail.text.toString()
+            val password = binding.addpass.text.toString()
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        startActivity(Intent(this, DashboardTabLayout::class.java))
+                        Toast.makeText(baseContext, "Login Success",
+                            Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
+
 }

@@ -24,7 +24,6 @@ class DashboardTabLayout : AppCompatActivity() {
 
         val iconSettings = findViewById<ImageButton>(R.id.iconsettings)
         iconSettings.setOnClickListener {
-            // Mulai Activity baru ketika ikon diklik
             val intent = Intent(this, Settings::class.java)
             startActivity(intent)
         }
@@ -34,7 +33,7 @@ class DashboardTabLayout : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(MonConFragment(), "Monitoring dan Controling")
+        adapter.addFragment(MonConFragment(), "Monitoring dan Controlling")
         adapter.addFragment(EvalFragment(), "Evaluation")
         adapter.addFragment(PlantInfoFragment(), "Plant Info")
         viewPager.adapter = adapter

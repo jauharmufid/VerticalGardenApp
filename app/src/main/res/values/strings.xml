@@ -22,8 +22,8 @@
     <string name="kesehatan_tanaman">Plant Health</string>
     <string name="probabilitas_gagal_panen">Probability of Crop Failure</string>
     <string name="monitoring">MONITORING</string>
-    <string name="controling">CONTROLING</string>
-    <string name="moncon_temperature">Temperature</string>
+    <string name="controling">CONTROLLING</string>
+    <string name="moncon_temperature">Hum &amp; Temp</string>
     <string name="moncon_nutritions">Nutritions</string>
     <string name="moncon_ph">pH</string>
     <string name="moncon_water">Water</string>
@@ -48,4 +48,26 @@
     <string name="nilai_probgagalpanen">0 %</string>
     <string name="nilai_planthealth">0 %</string>
     <string name="nilai_waktupanen">0 Days</string>
+    <string name="applynutritions">APPLY</string>
+    <string name="add_nutritions">Add Nutritions</string>
+    <string name="applyphdown">APPLY</string>
+    <string name="add_ph_down">Add pH Down</string>
+    <string name="applyph">APPLY</string>
+    <string name="add_ph">Add pH</string>
+    <string name="applywater">APPLY</string>
+    <string name="add_water">Add Water</string>
+    <string name="iconwatermonitoring">iconwatermonitoring</string>
+    <string name="iconnutrisimonitoring">iconnutrisimonitoring</string>
+    <string name="iconphmonitoring">iconphmonitoring</string>
+    <string name="icontempmonitoring">icontempmonitoring</string>
+    <string name="Auto_switch">Auto</string>
+    <string name="Manual_switch">Manual</string>
+    <string name="_0_c">0°C</string>
+    <string name="_0ppm">0ppm</string>
+    <string name="_0">0</string>
+    <string name="__0">0%</string>
+    <string name="recwater">recwater</string>
+    <string name="recph">recph</string>
+    <string name="recnutrisi">recnutrisi</string>
+    <string name="rectemp">rectemp</string>
 </resources>

@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
+import android.widget.Toast
 import com.example.verticalgarden.databinding.ActivityMainBinding
 import com.example.verticalgarden.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -19,14 +22,19 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(view)
         supportActionBar?.hide()
 
+        auth = FirebaseAuth.getInstance()
+
         btnSigninListener()
         setupEyeButton()
+        setupSignupButton()
     }
+
     private fun btnSigninListener(){
         binding.signinonsignup.setOnClickListener {
-            startActivity(Intent(this, ActivityMainBinding::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
+
     private fun setupEyeButton() {
         val passwordEditText = binding.signupcreatepass
         val passwordEditText2 = binding.signupconfirmpass
@@ -50,5 +58,32 @@ class RegisterActivity : AppCompatActivity() {
                 passwordEditText2.setSelection(passwordEditText2.text.length)
             }
         })
+    }
+
+    private fun setupSignupButton() {
+        binding.signupnbutton.setOnClickListener {
+            val fullName = binding.signupfullname.text.toString()
+            val email = binding.signupemail.text.toString()
+            val password = binding.signupcreatepass.text.toString()
+            val confirmPassword = binding.signupconfirmpass.text.toString()
+
+            if (password == confirmPassword) {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            startActivity(Intent(this, MainActivity::class.java))
+                            Toast.makeText(baseContext, "Sign Up Success",
+                                Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(baseContext, "Passwords do not match.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
