@@ -15,35 +15,35 @@
             android:orientation="vertical"
             android:layout_gravity="center">
             <ImageView
-                android:id="@+id/plantinfo1"
+                android:id="@+id/plantinfopakcoy"
                 android:layout_width="346dp"
                 android:layout_height="206dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bgplantinfo"
+                android:background="@drawable/pakcoy"
                 android:paddingTop="30dp">
             </ImageView>
             <ImageView
-                android:id="@+id/plantinfo2"
+                android:id="@+id/plantinfoselada"
                 android:layout_width="346dp"
                 android:layout_height="206dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bgplantinfo"
+                android:background="@drawable/selada"
                 android:paddingTop="30dp">
             </ImageView>
             <ImageView
-                android:id="@+id/plantinfo3"
+                android:id="@+id/plantinfokangkung"
                 android:layout_width="346dp"
                 android:layout_height="206dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bgplantinfo"
+                android:background="@drawable/kangkung"
                 android:paddingTop="30dp">
             </ImageView>
             <ImageView
-                android:id="@+id/plantinfo4"
+                android:id="@+id/plantinfobayam"
                 android:layout_width="346dp"
                 android:layout_height="206dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bgplantinfo"
+                android:background="@drawable/bayam"
                 android:paddingTop="30dp">
             </ImageView>
 

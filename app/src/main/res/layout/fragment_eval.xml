@@ -103,6 +103,5 @@
             android:paddingTop="25dp"
             android:layout_below="@id/textprobgagalpanen"
             android:layout_centerHorizontal="true"/>
-
     </RelativeLayout>
 </FrameLayout>

@@ -70,4 +70,6 @@
     <string name="recph">recph</string>
     <string name="recnutrisi">recnutrisi</string>
     <string name="rectemp">rectemp</string>
+    <string name="uploadpict">uploadpict</string>
+    <string name="takeapict">takeapict</string>
 </resources>

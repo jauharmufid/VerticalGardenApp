@@ -214,7 +214,7 @@ class MonConFragment : Fragment() {
 
             if (snapshot != null && snapshot.exists()) {
                 // Ambil nilai dari Firestore
-                val dataNutrisi = snapshot.get("TDS").toString()
+                val dataNutrisi = snapshot.get("TDS_ppm").toString()
                 // Atur teks TextView dengan data dari Firestore
                 nilaiNutrisi.text = dataNutrisi
             } else {
@@ -248,8 +248,8 @@ class MonConFragment : Fragment() {
 
             if (snapshot != null && snapshot.exists()) {
                 // Ambil nilai dari Firestore
-                val dataHumidity = snapshot.getString("Humidity")
-                val dataTemperature = snapshot.getString("Temperature")
+                val dataHumidity = snapshot.getString("HUMIDITY")
+                val dataTemperature = snapshot.getString("TEMPERATURE_c")
 
                 // Atur teks TextView dengan data dari Firestore
                 nilaiTemperature.text = "$dataHumidity\n$dataTemperature"
