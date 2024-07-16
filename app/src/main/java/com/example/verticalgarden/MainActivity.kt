@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         btnGoogleSignInListener()
         btnSignupListener()
-        btnForgotpass()
+//        btnForgotpass()
         setupEyeButton()
         setupLoginButton()
     }
@@ -78,11 +78,11 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
     }
-    private fun btnForgotpass(){
-        binding.forgotpass.setOnClickListener {
-            startActivity(Intent(this, ForgotpassActivity::class.java))
-        }
-    }
+//    private fun btnForgotpass(){
+//        binding.forgotpass.setOnClickListener {
+//            startActivity(Intent(this, ForgotpassActivity::class.java))
+//        }
+//    }
     private fun btnSignupListener(){
         binding.Signup.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))

@@ -121,7 +121,7 @@ class MonConFragment : Fragment() {
 
             if (snapshot != null && snapshot.exists()) {
                 // Ambil nilai dari Firestore
-                val dataNutrition = snapshot.getString("TDS")
+                val dataNutrition = snapshot.getString("TDS_ppm")
 
                 applyButtonNutrisi.setOnClickListener {
                     val desiredPPM = editTextNutrisi.text.toString()
@@ -199,7 +199,7 @@ class MonConFragment : Fragment() {
                 // Ambil nilai dari Firestore
                 val dataWater = snapshot.getString("Distance")
                 // Atur teks TextView dengan data dari Firestore
-                nilaiWater.text = dataWater
+                nilaiWater.text = "$dataWater Cm"
             } else {
                 Log.d(TAG, "Current data: null")
             }
@@ -216,7 +216,7 @@ class MonConFragment : Fragment() {
                 // Ambil nilai dari Firestore
                 val dataNutrisi = snapshot.get("TDS_ppm").toString()
                 // Atur teks TextView dengan data dari Firestore
-                nilaiNutrisi.text = dataNutrisi
+                nilaiNutrisi.text = "$dataNutrisi ppm"
             } else {
                 Log.d(TAG, "Current data: null")
             }
@@ -252,7 +252,7 @@ class MonConFragment : Fragment() {
                 val dataTemperature = snapshot.getString("TEMPERATURE_c")
 
                 // Atur teks TextView dengan data dari Firestore
-                nilaiTemperature.text = "$dataHumidity\n$dataTemperature"
+                nilaiTemperature.text = "$dataHumidity%\n$dataTemperature°C"
             } else {
                 Log.d(TAG, "Current data: null")
             }

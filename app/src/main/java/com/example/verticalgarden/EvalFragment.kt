@@ -41,55 +41,58 @@ class EvalFragment : Fragment() {
         // Dapatkan referensi ke dokumen yang berisi nilai sensor
         val docRef = db.collection("Sensor").document("Data")
 
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    // Ambil nilai sensor dari dokumen
-                    val humidity = document.getString("HUMIDITY")?.toDoubleOrNull() ?: 0.0
-                    val tds = document.getString("TDS_ppm")?.toDoubleOrNull() ?: 0.0
-                    val temperature = document.getString("TEMPERATURE_c")?.toDoubleOrNull() ?: 0.0
-                    val pH = document.getString("pH")?.toDoubleOrNull() ?: 0.0
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                // Tangani kasus ketika terjadi kesalahan saat mendengarkan perubahan
+                e.printStackTrace()
+                return@addSnapshotListener
+            }
 
-                    // Inisialisasi Retrofit
-                    val retrofit = Retrofit.Builder()
-                        .baseUrl("https://vertikalgardenapp-46mr5uinbq-uc.a.run.app")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build()
+            if (snapshot != null && snapshot.exists()) {
+                // Ambil nilai sensor dari dokumen
+                val humidity = snapshot.getString("HUMIDITY")?.toDoubleOrNull() ?: 0.0
+                val tds = snapshot.getString("TDS_ppm")?.toDoubleOrNull() ?: 0.0
+                val temperature = snapshot.getString("TEMPERATURE_c")?.toDoubleOrNull() ?: 0.0
+                val pH = snapshot.getString("pH")?.toDoubleOrNull() ?: 0.0
 
-                    // Inisialisasi ApiService
-                    val service = retrofit.create(ApiService::class.java)
+                // Inisialisasi Retrofit
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("https://vertikalgardenapp-46mr5uinbq-as.a.run.app")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
 
-                    // Buat objek SensorReadingRequest untuk dikirim ke API
-                    val requestData = SensorReadingRequest(listOf(tds, temperature, humidity, pH))
+                // Inisialisasi ApiService
+                val service = retrofit.create(ApiService::class.java)
 
-                    // Kirim permintaan POST ke API menggunakan Retrofit
-                    service.getPrediction(requestData).enqueue(object : Callback<ResponseBody> {
-                        override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                            if (response.isSuccessful) {
-                                val responseData = response.body()?.string()
+                // Buat objek SensorReadingRequest untuk dikirim ke API
+                val requestData = SensorReadingRequest(listOf(tds, temperature, humidity, pH))
 
-                                // Dapatkan referensi ke TextView di layout fragment_eval.xml
-                                val textView = view.findViewById<TextView>(R.id.evalharvesttimeest)
+                // Kirim permintaan POST ke API menggunakan Retrofit
+                service.getPrediction(requestData).enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if (response.isSuccessful) {
+                            val responseData = response.body()?.string()
 
-                                // Pastikan Anda berada di thread utama saat memperbarui UI
-                                activity?.runOnUiThread {
-                                    // Tampilkan respons JSON pada TextView
-                                    textView.text = responseData
-                                }
+                            // Dapatkan referensi ke TextView di layout fragment_eval.xml
+                            val textView = view.findViewById<TextView>(R.id.evalharvesttimeest)
+
+                            // Pastikan Anda berada di thread utama saat memperbarui UI
+                            activity?.runOnUiThread {
+                                // Tampilkan respons JSON pada TextView
+                                textView.text = responseData
                             }
                         }
+                    }
 
-                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                            // Tangani kasus ketika permintaan gagal
-                            t.printStackTrace()
-                        }
-                    })
-                }
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        // Tangani kasus ketika permintaan gagal
+                        t.printStackTrace()
+                    }
+                })
+            } else {
+                println("Current data: null")
             }
-            .addOnFailureListener { exception ->
-                // Tangani kasus ketika pengambilan data dari Firestore gagal
-                exception.printStackTrace()
-            }
+        }
 
         return view
     }

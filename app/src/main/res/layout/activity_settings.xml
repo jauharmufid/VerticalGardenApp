@@ -59,24 +59,24 @@
         android:fontFamily="@font/intersemibold"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/buttondashboardsettings"/>
-    <Button
-        android:id="@+id/buttonresetpass"
-        android:layout_below="@id/buttondashboard"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/settingbutton"
-        android:text="@string/reset_password_settings"
-        android:textColor="@color/Green"
-        android:fontFamily="@font/intersemibold"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/buttonresetpasssettings"/>
+<!--    <Button-->
+<!--        android:id="@+id/buttonresetpass"-->
+<!--        android:layout_below="@id/buttondashboard"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/settingbutton"-->
+<!--        android:text="@string/reset_password_settings"-->
+<!--        android:textColor="@color/Green"-->
+<!--        android:fontFamily="@font/intersemibold"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:contentDescription="@string/buttonresetpasssettings"/>-->
     <Button
         android:id="@+id/buttonlogout"
-        android:layout_below="@id/buttonresetpass"
+        android:layout_below="@id/buttondashboard"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_shape"
         android:text="@string/logout_settings"
         android:textColor="@color/white"

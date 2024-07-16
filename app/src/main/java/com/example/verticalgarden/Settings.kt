@@ -28,12 +28,12 @@ class Settings : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonresetpass = findViewById<Button>(R.id.buttonresetpass)
-        buttonresetpass.setOnClickListener {
-            // Mulai DashboardTabLayout ketika buttondashboard diklik
-            val intent = Intent(this, ForgotpassActivity::class.java)
-            startActivity(intent)
-        }
+//        val buttonresetpass = findViewById<Button>(R.id.buttonresetpass)
+//        buttonresetpass.setOnClickListener {
+//            // Mulai DashboardTabLayout ketika buttondashboard diklik
+//            val intent = Intent(this, ForgotpassActivity::class.java)
+//            startActivity(intent)
+//        }
 
         val buttonlogout = findViewById<Button>(R.id.buttonlogout)
         buttonlogout.setOnClickListener {
