@@ -57,7 +57,7 @@ class EvalFragment : Fragment() {
 
                 // Inisialisasi Retrofit
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("https://vertikalgardenapp-46mr5uinbq-as.a.run.app")
+                    .baseUrl("https://vertikalgardenapp-46mr5uinbq-et.a.run.app")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 

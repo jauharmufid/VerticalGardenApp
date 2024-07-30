@@ -18,7 +18,7 @@
     <string name="default_web_client_id">975845627953-1fb620shb3m09dlvarjfrbt95k1ejk55.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
-    <string name="waktu_panen">Harvest Time Estimation</string>
+    <string name="waktu_panen">Prediction of Plant Condition</string>
     <string name="kesehatan_tanaman">Plant Health</string>
     <string name="probabilitas_gagal_panen">Probability of Crop Failure</string>
     <string name="monitoring">MONITORING</string>

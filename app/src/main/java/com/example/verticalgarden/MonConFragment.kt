@@ -79,7 +79,7 @@ class MonConFragment : Fragment() {
                             if (document != null) {
                                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                                 val mode = document.getString("mode")
-                                if (mode == "manual" && desiredVolume > dataWater.toString()) {
+                                if (mode == "manual" && desiredVolume < dataWater.toString()) {
                                     docRefControlWater.update("desiredVolume", desiredVolume)
                                         .addOnSuccessListener {
                                             Log.d(TAG, "DocumentSnapshot successfully updated!")
