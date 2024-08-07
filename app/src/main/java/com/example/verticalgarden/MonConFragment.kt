@@ -39,22 +39,20 @@ class MonConFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_mon_con, container, false)
 
-        // Mendapatkan referensi ke TextView
+        // Referensi TextView
         val nilaiWater: TextView = view.findViewById(R.id.nilaiwater)
         val nilaiNutrisi: TextView = view.findViewById(R.id.nilainutrisi)
         val nilaipH: TextView = view.findViewById(R.id.nilaiph)
         val nilaiTemperature: TextView = view.findViewById(R.id.nilaintemp)
 
-        // Mendapatkan referensi ke SwitchMaterial
+        // Referensi SwitchMaterial
         val switchMaterial = view.findViewById<SwitchMaterial>(R.id.switch1)
         val editTextWater = view.findViewById<EditText>(R.id.inputwater)
         val applyButtonWater = view.findViewById<Button>(R.id.applywater)
-//        val editTextpH = view.findViewById<EditText>(R.id.inputph)
-//        val applyButtonpH = view.findViewById<Button>(R.id.applyph)
         val editTextNutrisi = view.findViewById<EditText>(R.id.inputnutrisi)
         val applyButtonNutrisi = view.findViewById<Button>(R.id.applynutrisi)
 
-        // Membaca data dari Firestore
+        // Referensi Firestore
         val db = FirebaseFirestore.getInstance()
 
         //Water Controlling
@@ -68,7 +66,6 @@ class MonConFragment : Fragment() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                // Ambil nilai dari Firestore
                 val dataWater = snapshot.getString("Distance")
 
                 applyButtonWater.setOnClickListener {
@@ -107,8 +104,6 @@ class MonConFragment : Fragment() {
             }
         }
 
-        //////////////////////////////////////////pH Controlling/////////////////////////////////////////////////////
-
         //Nutrition Controlling
         val docRefSensorNutrisi = db.collection("Sensor").document("Data")
         val docRefControlNutrisi = db.collection("Control").document("settings")
@@ -120,7 +115,6 @@ class MonConFragment : Fragment() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                // Ambil nilai dari Firestore
                 val dataNutrition = snapshot.getString("TDS_ppm")
 
                 applyButtonNutrisi.setOnClickListener {
@@ -159,10 +153,10 @@ class MonConFragment : Fragment() {
             }
         }
 
-        // Atur listener untuk perubahan status switch
+        // Switch Mode
         switchMaterial.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Jika switch diaktifkan, ubah mode menjadi 'manual'
+                // Aktif,Manual
                 val docRef = db.collection("Control").document("settings")
                 docRef.update("mode", "manual")
                     .addOnSuccessListener {
@@ -174,7 +168,7 @@ class MonConFragment : Fragment() {
                         Toast.makeText(context, "Failed Update Mode", Toast.LENGTH_SHORT).show()
                     }
             } else {
-                // Jika switch dimatikan, ubah mode menjadi 'automatic'
+                // Non-aktif, Auto
                 val docRef = db.collection("Control").document("settings")
                 docRef.update("mode", "automatic")
                     .addOnSuccessListener {
@@ -188,6 +182,7 @@ class MonConFragment : Fragment() {
             }
         }
 
+        //Water Monitoring
         val docRef = db.collection("Sensor").document("Data")
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -196,15 +191,14 @@ class MonConFragment : Fragment() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                // Ambil nilai dari Firestore
                 val dataWater = snapshot.getString("Distance")
-                // Atur teks TextView dengan data dari Firestore
                 nilaiWater.text = "$dataWater Cm"
             } else {
                 Log.d(TAG, "Current data: null")
             }
         }
 
+        // Nutrisi Monitoring
         val docRefNutritions = db.collection("Sensor").document("Data")
         docRefNutritions.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -213,22 +207,20 @@ class MonConFragment : Fragment() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                // Ambil nilai dari Firestore
                 val dataNutrisi = snapshot.get("TDS_ppm").toString()
-                // Atur teks TextView dengan data dari Firestore
                 nilaiNutrisi.text = "$dataNutrisi ppm"
             } else {
                 Log.d(TAG, "Current data: null")
             }
         }
 
+        // pH Monitoring
         val docRefpH = db.collection("Sensor").document("Data")
         docRefpH.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
-
             if (snapshot != null && snapshot.exists()) {
                 // Ambil nilai dari Firestore
                 val datapH = snapshot.getString("pH")
@@ -239,6 +231,7 @@ class MonConFragment : Fragment() {
             }
         }
 
+        // DHT22 Monitoring
         val docRefTemperature = db.collection("Sensor").document("Data")
         docRefTemperature.addSnapshotListener { snapshot, e ->
             if (e != null) {

@@ -35,27 +35,25 @@ class EvalFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_eval, container, false)
 
-        // Inisialisasi Firestore
+        // Referensi Firestore
         val db = FirebaseFirestore.getInstance()
 
-        // Dapatkan referensi ke dokumen yang berisi nilai sensor
+        // Referensi Firestore
         val docRef = db.collection("Sensor").document("Data")
 
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
-                // Tangani kasus ketika terjadi kesalahan saat mendengarkan perubahan
                 e.printStackTrace()
                 return@addSnapshotListener
             }
 
             if (snapshot != null && snapshot.exists()) {
-                // Ambil nilai sensor dari dokumen
                 val humidity = snapshot.getString("HUMIDITY")?.toDoubleOrNull() ?: 0.0
                 val tds = snapshot.getString("TDS_ppm")?.toDoubleOrNull() ?: 0.0
                 val temperature = snapshot.getString("TEMPERATURE_c")?.toDoubleOrNull() ?: 0.0
                 val pH = snapshot.getString("pH")?.toDoubleOrNull() ?: 0.0
 
-                // Inisialisasi Retrofit
+                // Retrofit RESTful API Endpoint
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://vertikalgardenapp-46mr5uinbq-et.a.run.app")
                     .addConverterFactory(GsonConverterFactory.create())
@@ -64,28 +62,23 @@ class EvalFragment : Fragment() {
                 // Inisialisasi ApiService
                 val service = retrofit.create(ApiService::class.java)
 
-                // Buat objek SensorReadingRequest untuk dikirim ke API
+                // POST API
                 val requestData = SensorReadingRequest(listOf(tds, temperature, humidity, pH))
 
-                // Kirim permintaan POST ke API menggunakan Retrofit
+                // POST API Retrofit
                 service.getPrediction(requestData).enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         if (response.isSuccessful) {
                             val responseData = response.body()?.string()
 
-                            // Dapatkan referensi ke TextView di layout fragment_eval.xml
+                            // Referensi Textview
                             val textView = view.findViewById<TextView>(R.id.evalharvesttimeest)
-
-                            // Pastikan Anda berada di thread utama saat memperbarui UI
                             activity?.runOnUiThread {
-                                // Tampilkan respons JSON pada TextView
                                 textView.text = responseData
                             }
                         }
                     }
-
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        // Tangani kasus ketika permintaan gagal
                         t.printStackTrace()
                     }
                 })
